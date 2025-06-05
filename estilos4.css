@@ -1,0 +1,255 @@
+/* --- Video de Fondo y Superposición (comunes a ambas páginas, podrían ir en un CSS base) --- */
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.2); /* Más oscuro para el fondo de la galería */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    z-index: 0;
+}
+
+/* --- Estilos Generales de la Página de Productos --- */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #000000; /* Color de texto predeterminado para el body */
+    position: relative; /* Necesario para que el video de fondo se comporte correctamente */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+}
+
+/* Estilos de encabezados y párrafos en la sección principal */
+.container h1, .container h2 {
+    margin-bottom: 20px;
+    color: #ffffff; /* Color blanco para los títulos sobre el video */
+    font-size: 2.5rem; /* Ajuste para un buen tamaño en escritorio */
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(141, 125, 125, 0.7);
+    z-index: 1; /* Para que el texto esté sobre el video */
+    position: relative; /* Permite z-index */
+}
+
+.container p {
+    color: #423535; /* Color blanco para los párrafos sobre el video */
+    font-size: 1.1rem;
+    font-weight: normal;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+    text-shadow: 1px 1px 2px rgba(162, 151, 151, 0.6);
+    z-index: 1;
+    position: relative;
+}
+
+/* --- Estilos para las Tarjetas de Productos --- */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-3 {
+    z-index: 1; /* Asegura que las tarjetas estén sobre el video */
+    position: relative; /* Permite z-index */
+    justify-content: center; /* Centra las columnas si no ocupan todo el ancho */
+}
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 100%; /* Las tarjetas ocuparán la altura de su columna Bootstrap */
+    text-decoration: none;
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco semi-transparente */
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más grande al hover */
+}
+
+.card:active,
+.card:focus {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 280px; /* Ajusta la altura de las imágenes. Experimenta con esto. */
+    object-fit: cover; /* Recorta la imagen para que encaje */
+    border-bottom: 1px solid #eee;
+}
+
+.card-body {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-text {
+    font-size: 1.1rem; /* Tamaño de fuente relativo para el texto de la tarjeta */
+    line-height: 1.5;
+    color: #333; /* Color oscuro para el texto de la tarjeta */
+    margin-bottom: 0;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita el texto a 3 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Estilos para el Footer (comunes) --- */
+/* Es recomendable que estos estilos del footer estén en un archivo CSS aparte */
+/* para ser importados por ambas páginas, o que los dupliques aquí si es necesario. */
+/* Para este ejemplo, asumo que los mantienes en este archivo. */
+
+.footer {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 40px 20px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: auto; /* Empuja el footer hacia abajo si el contenido es corto */
+}
+
+.contact-info {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contact-info h2,
+.contact-info h4 {
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    font-size: 1.6rem;
+}
+
+.contact-info p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+    font-weight: normal;
+}
+
+.contact-info p strong {
+    color: #000;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.15);
+}
+
+.footer-txt {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+.footer-txt p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 auto;
+    max-width: 800px;
+    font-weight: normal;
+}
+
+/* --- MEDIA QUERIES para Productos y Footer --- */
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 575.98px) { /* Extra pequeño (menos de 576px, el "xs" de Bootstrap) */
+    .container h1 {
+        font-size: 1.8rem;
+    }
+    .container p {
+        font-size: 0.9rem;
+    }
+    .card-img-top {
+        height: 200px; /* Reduce la altura de la imagen en móviles */
+    }
+    .card-text {
+        font-size: 1rem;
+    }
+    .footer {
+        padding: 25px 10px;
+    }
+    .contact-info h2, .contact-info h4 {
+        font-size: 1.2rem;
+    }
+    .contact-info p {
+        font-size: 0.85rem;
+    }
+    .social-links img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (min-width: 576px) and (max-width: 991.98px) { /* sm y md de Bootstrap */
+    .container h1 {
+        font-size: 2.2rem;
+    }
+    .container p {
+        font-size: 1rem;
+    }
+    .card-img-top {
+        height: 250px; /* Altura intermedia para tablets */
+    }
+}
+
+/* Ajustes para pantallas grandes (desktops) */
+@media (min-width: 992px) { /* lg y xl de Bootstrap */
+    .container h1 {
+        font-size: 2.8rem;
+    }
+    .container p {
+        font-size: 1.1rem;
+    }
+    .card-img-top {
+        height: 300px; /* Mayor altura de imagen para escritorios grandes */
+    }
+}
